@@ -14,7 +14,7 @@
 					</div>
 					<ul class=\"list-group list-group-flush\">
 						<li class=\"list-group-item\">" . $item["brand"] . "</li>
-						<li class=\"list-group-item\">&#8369; " . $item["price"] . "</li>
+						<li class=\"list-group-item\">&#8369; " . number_format($item["price"]) . "</li>
 						<li class=\"list-group-item\">Add To Cart</li>
 					</ul>
 				</div>
