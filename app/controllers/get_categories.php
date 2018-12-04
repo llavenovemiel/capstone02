@@ -5,7 +5,10 @@
 	$result = mysqli_query($conn, $sql);
 	$categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-	echo json_encode($categories);
+	foreach($categories as $category) {
+		echo "<p id= " . $category["id"] . " class=\"list-group-item category\">" . $category["name"] . "</p>";
+	}
+					
 
 	// mysqli_close($conn);
 

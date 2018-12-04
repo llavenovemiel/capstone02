@@ -8,29 +8,11 @@
 		
 		<?php require_once("../partials/navbar.php") ?>
 
-		<div class="section1 row">
-			<div class="col-lg-3 left">
-	
-				<ul class="categories pl-3">
-					<?php require_once("../controllers/get_categories.php") ?>
-				</ul>
-				<form class="pl-3">
-					<div class="input-group">
-						<input id="search" class="form-control" type="text" placeholder="Search" name="search">
-					    <button id="searchIcon" class="input-group-append" type="submit"><i class="fas fa-search"></i></button>
-					</div>
-				</form>
-				
-				
-			</div>
-			<div class="col-lg-9 right pr-lg-5 px-4">
-				
-				<div class="row items">
-					<?php require_once("../controllers/get_items.php") ?>
-				</div>
+		<div class="section1 row align-items-center product-info">
+			
+			<?php require_once("../controllers/get_product.php") ?>
+			
 
-
-			</div>
 		</div>
 
 	</main>
