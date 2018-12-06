@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+?>
+
 <nav class="super-nav container-fluid row align-items-center mt-2">
 			
 	<div class="nav-left col-lg-4 text-center col-3">
@@ -20,7 +24,15 @@
 	</div>
 
 	<div class="nav-right offset-lg-1 col-lg-3 d-flex flex-row justify-content-between">
-		<a href="">Cart</a>
+		<a href="">Cart
+			<span id="cart-count">
+				<?php 
+					if (isset($_SESSION["cart"])) {
+						echo array_sum($_SESSION["cart"]);
+					}				
+				?>
+			</span>
+		</a>
 		<a href="">Wishlist</a>
 		<a href="">Search</a>
 	</div>

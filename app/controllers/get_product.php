@@ -32,7 +32,6 @@
 		echo
 		"<div class=\"container-fluid\">
 				<h2>No product found.</h2>
-					
 		</div>";
 	}
 		
