@@ -1,6 +1,7 @@
 <?php 
 	require_once("connect.php");
 	
+
 	if (isset($_GET["id"]) && !empty($_GET["id"])) {
 		$id = htmlspecialchars($_GET["id"]);
 		$sql = "SELECT * FROM items where id = $id";
@@ -17,7 +18,7 @@
 					<p>&#8369; ". number_format($item["price"]) . "</p>	
 			</div>
 			
-			<div class=\"col-lg-8 right pr-lg-5 px-4\">
+			<div class=\"col-lg-8 right pr-lg-5 px-4 d-flex flex-row align-items-center justify-content-center\">
 				<img class=\"img-fluid\" src=\"../assets/images/". $item["image"] . "\">
 			</div>";
 		} else {
@@ -34,9 +35,7 @@
 				<h2>No product found.</h2>
 		</div>";
 	}
-		
-	
-	
 
-	
+	mysqli_close($conn);
+			
 ?>

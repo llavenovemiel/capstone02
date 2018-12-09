@@ -6,7 +6,7 @@
 	$categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 	foreach($categories as $category) {
-		echo "<p id= " . $category["id"] . " class=\"list-group-item category\">" . $category["name"] . "</p>";
+		echo "<li id= " . $category["id"] . " class=\"category\">" . $category["name"] . "</li>";
 	}
 					
 
