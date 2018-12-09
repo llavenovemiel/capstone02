@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2018 at 09:26 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Generation Time: Dec 09, 2018 at 04:08 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -50,7 +50,7 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 
 CREATE TABLE `items` (
   `id` int(11) NOT NULL,
-  `name` varchar(25) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `price` decimal(10,0) NOT NULL,
   `brand` varchar(15) NOT NULL,
   `description` text NOT NULL,
@@ -84,7 +84,7 @@ INSERT INTO `items` (`id`, `name`, `price`, `brand`, `description`, `category_id
 (20, 'Carry Bag', '3500', 'Dahon', 'This practical bag allows you to carry your Dahon on your back.', 2, 'backpack_carrybag.png'),
 (21, 'Body Bag', '7000', 'Dahon', 'Body bag for your Dahon.', 2, 'body_bag.jpg'),
 (22, 'Front Reflector', '350', 'Brompton', 'Front reflector with bracket assembly', 2, 'front_reflector.jpg'),
-(23, 'Cateye Volt400 Front Batt', '3400', 'Brompton', 'Upgrade your Brompton\'s lighting with this powerful light.', 2, 'cateye.jpg'),
+(23, 'Cateye Volt400 Front Battery', '3400', 'Brompton', 'Upgrade your Brompton\'s lighting with this powerful light.', 2, 'cateye.jpg'),
 (24, 'Rear Reflector', '470', 'Brompton', 'Rear Reflector with bracket assembly', 2, 'rear_reflector.jpg'),
 (25, 'Luggage Truss', '1850', 'Tern', 'Luggage truss for your tern bike', 2, 'luggage_truss.jpg'),
 (26, 'Cargo Rack', '2195', 'Tern', 'Heavy-duty rear-rack', 2, 'cargo_rack.jpg'),
@@ -93,62 +93,12 @@ INSERT INTO `items` (`id`, `name`, `price`, `brand`, `description`, `category_id
 (29, 'Rear Mudguard Flap', '250', 'Brompton', 'Replacement rear mudguard flap', 3, 'rear_mudguard_flap.jpg'),
 (30, 'Front Mudguard Flap', '300', 'Brompton', 'Replacement front mudguard flap', 3, 'front_mudguard_flap.jpg'),
 (31, 'Rear Mudguard Blade ', '580', 'Brompton', 'Standard rear mudguard for your Brompton', 3, 'mudguard_blade.jpg'),
-(32, 'Standard Front Wheel Radi', '3000', 'Brompton', 'Standard front wheel with radial lacing and including fixings', 3, 'standard_front_wheel_radial.jpg'),
+(32, 'Standard Front Wheel', '3000', 'Brompton', 'Standard front wheel with radial lacing and including fixings', 3, 'standard_front_wheel_radial.jpg'),
 (34, 'Rear Wheel', '8000', 'Brompton', 'Standard rear wheel with radial lacing and including fixings', 3, 'rear_wheel.jpg'),
 (35, 'Tyre 35-349 SM', '2000', 'Brompton', 'The toughest and most resilient tyre.', 3, 'tyre_r.jpg'),
 (36, 'Porter and Saddle', '2150', 'Tern', 'The underside of the saddle functions as a comfortable shoulder pad. ', 3, 'porter_saddle.jpg'),
 (37, 'Kinetix Wheels', '8800', 'Tern', 'Hand-built straight pull wheels', 3, 'kinetix.jpg'),
 (38, 'Mainstay Chain Guide', '465', 'Tern', 'The solution to chain drops', 3, 'chain_guide.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `orders`
---
-
-CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `transaction_code` varchar(50) NOT NULL,
-  `purchase_date` date NOT NULL,
-  `total` int(11) NOT NULL,
-  `status_id` int(11) NOT NULL,
-  `payment_mode_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_items`
---
-
-CREATE TABLE `order_items` (
-  `id` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment_modes`
---
-
-CREATE TABLE `payment_modes` (
-  `id` int(11) NOT NULL,
-  `name` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `statuses`
---
-
-CREATE TABLE `statuses` (
-  `id` int(11) NOT NULL,
-  `name` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -159,7 +109,7 @@ CREATE TABLE `statuses` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(11) NOT NULL,
-  `password` varchar(11) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(25) NOT NULL,
   `first_name` varchar(25) NOT NULL,
   `last_name` varchar(25) NOT NULL
@@ -170,7 +120,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `first_name`, `last_name`) VALUES
-(1, 'bob', 'bob123', 'bob@gmail.com', 'robert', 'brown');
+(13, 'Vim', '$2y$10$WadC8JcxSS5ClxVa5ixJDOl5.JwpAY8Lqfx97sh8wtj3ftCxojj8W', 'llavenovemiel@gmail.com', 'Vim', 'Llave'),
+(14, 'Jim', '$2y$10$opguynKyGST1vp9SzHxJm.UYU6s2lLTV1NtqRvadrAfFAct7NSSa2', 'jim@gmail.com', 'James', 'Halpert');
 
 --
 -- Indexes for dumped tables
@@ -188,35 +139,6 @@ ALTER TABLE `categories`
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_id` (`category_id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `status_id` (`status_id`),
-  ADD KEY `payment_mode_id` (`payment_mode_id`);
-
---
--- Indexes for table `order_items`
---
-ALTER TABLE `order_items`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `item_id` (`item_id`),
-  ADD KEY `order_id` (`order_id`);
-
---
--- Indexes for table `payment_modes`
---
-ALTER TABLE `payment_modes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `statuses`
---
-ALTER TABLE `statuses`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -241,34 +163,10 @@ ALTER TABLE `items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `order_items`
---
-ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `payment_modes`
---
-ALTER TABLE `payment_modes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `statuses`
---
-ALTER TABLE `statuses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -279,21 +177,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `items`
   ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`),
-  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`payment_mode_id`) REFERENCES `payment_modes` (`id`);
-
---
--- Constraints for table `order_items`
---
-ALTER TABLE `order_items`
-  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`),
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
