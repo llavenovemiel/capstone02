@@ -1,14 +1,14 @@
 const signUp = () => {
+	
+	const firstName = $("#first-name");
+	const lastName = $("#last-name");
+	const userName = $("#username");
+	const email = $("#email");
+	const pword1 = $("#password");
+	const pword2 = $("#confirm-password");
 
 	$("#add-user").click((e)=>{
 		e.preventDefault();
-		
-		const firstName = $("#first-name");
-		const lastName = $("#last-name");
-		const userName = $("#username");
-		const email = $("#email");
-		const pword1 = $("#password");
-		const pword2 = $("#confirm-password");
 
 
 		if (!firstName.val()) {

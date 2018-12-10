@@ -1,11 +1,11 @@
 const login = () => {
 
+	const userName = $("#user-name");
+	const password = $("#password");
+
 	$("#login").click((e)=>{
 		e.preventDefault();
 		
-		
-		const userName = $("#user-name");
-		const password = $("#password");
 
 		if (!userName.val()) {
 			userName.next().html("Please enter your username.");
