@@ -13,6 +13,6 @@
 
 	mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
-	header("Location: ../views/shop.php");
+	header("Location: ../views/items.php");
 
  ?>

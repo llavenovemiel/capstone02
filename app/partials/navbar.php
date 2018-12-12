@@ -1,25 +1,33 @@
-<?php 
-	session_start();
-?>
-
 <nav class="super-nav container-fluid row align-items-center mt-2">
 			
 	<div class="nav-left col-lg-4 text-center col-3">
 		
 		<input class="d-none" type="checkbox" name="" id="toggle">
 		<div class="menu col-lg-12 d-lg-flex flex-lg-row justify-content-lg-between pl-0">
-			<a href="index.php">Home</a>
-			<a href="shop.php">Shop</a>
-			<a href="">Pages</a>
-			<a href="login.php">
-				<?php
-					if (isset($_SESSION["user"])) {
-						echo "Welcome, " . $_SESSION["user"]["username"];
-					} else {
-						echo "Login";
-					}
-				?>	
-			</a>	
+
+
+			<?php if(!isset($_SESSION["user"]) || (isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 2)) { ?>
+				<a href="index.php">Home</a>
+				<a href="shop.php">Shop</a>
+				<a href="">Pages</a>
+			<?php } ?>
+
+			
+			<?php if(!isset($_SESSION["user"])) { ?>
+				<a href="login.php">Login</a>
+			<?php } else { ?>
+				<a href="profile.php">Welcome, <?php echo $_SESSION["user"]["username"]; ?></a>
+			<?php } ?>	
+			
+
+			<a href="../controllers/logout.php">Log Out</a>
+
+			<?php if(isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 1) {  ?>
+				<a href="items.php">Items</a>
+				<a href="users.php">Users</a>
+
+			<?php } ?>
+
 		</div>
 	</div>
 
@@ -32,17 +40,24 @@
 	</div>
 
 	<div class="nav-right offset-lg-1 col-lg-3 d-flex flex-row justify-content-between">
-		<a href="cart.php">Cart
-			<span id="cart-count">
-				<?php 
-					if (isset($_SESSION["cart"])) {
-						echo array_sum($_SESSION["cart"]);
-					}				
-				?>
-			</span>
-		</a>
-		<a href="">Wishlist</a>
-		<a href="">Search</a>
+		
+		<?php if(!isset($_SESSION["user"]) || (isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 2)) { ?>
+			<a href="cart.php">Cart
+				<span id="cart-count">
+					<?php 
+						if (isset($_SESSION["cart"])) {
+							echo array_sum($_SESSION["cart"]);
+						}				
+					?>
+				</span>
+			</a>
+
+			<a href="">Wishlist</a>
+			<a href="">Search</a>
+
+		<?php } ?>
+
+		
 	</div>
 
 </nav> 

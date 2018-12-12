@@ -1,5 +1,11 @@
 <?php $page_title = "Cart" ?>
 <?php require_once("../partials/header.php") ?>
+<?php 
+	if (!isset($_SESSION["user"]) || (isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 2)) {
+		header("Location: error.php");
+	}
+ ?>
+
 
 <body>
 	<main class="container-fluid text-center">

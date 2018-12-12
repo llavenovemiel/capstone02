@@ -6,7 +6,7 @@
 	$user_name = $_POST["userName"];
 	$email = $_POST["email"];
 	$password = password_hash($_POST["password"], PASSWORD_BCRYPT);
-
+	$role_id = 2;
 	$sql = "SELECT * from users WHERE username = '$user_name'";
 	$result = mysqli_query($conn, $sql);
 
@@ -19,7 +19,7 @@
 		if (mysqli_num_rows($result)) {
 			die("Email already registered.");
 		} else {
-			$sql = "INSERT INTO users (username, password, email, first_name, last_name) VALUES ('$user_name', '$password', '$email', '$first_name', '$last_name')";
+			$sql = "INSERT INTO users (username, password, email, first_name, last_name, role_id) VALUES ('$user_name', '$password', '$email', '$first_name', '$last_name', '$role_id')";
 			$result = mysqli_query($conn, $sql);
 		}
 		

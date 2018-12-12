@@ -1,6 +1,13 @@
 <?php 
 	$pageTitle = "Confirmation";
 	require_once("../partials/header.php");
+
+ ?>
+
+ <?php 
+	if ((isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 1)) {
+		header("Location: error.php");
+	}
  ?>
 
  <body>
@@ -29,6 +36,7 @@
 				</div>
 			</div>
 		</div>
+	<?php
 		}
 	 ?>
 

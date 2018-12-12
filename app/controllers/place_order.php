@@ -1,16 +1,20 @@
 <?php 
 
-// see files from elah for preceding code
 
+require("connect.php");
+session_start();
+
+// see files from elah for preceding code
 
 
 //get all details of the order
 $user_id = $_SESSION["user"]["id"];
 $purchase_date = date("Y-m-d G:i:s");
 $payment_mode_id = 1; //COD
-$status_id = 1 //pending
-$delivery_address = $_POST["addressLine"];
-$transaction_code = generate_new_transaction_number();
+$status_id = 1; //pending
+$delivery_address = $_POST["address-line"];
+// $transaction_code = generate_new_transaction_number();
+$transaction_code = 1234;
 $cart_total = 0;
 foreach ($_SESSION["cart"] as $id => $qty) {
 	$cart_total_query = "SELECT * FROM items WHERE id = $id";
@@ -19,9 +23,10 @@ foreach ($_SESSION["cart"] as $id => $qty) {
 	$cart_total += $qty * $item_info["price"];
 }
 
-$sql_query = "INSERT INTO orders(user_id, transaction_code, purchase_date, total, status_id, payment_mode_id) VALUES ('$user_id', '$transaction_code', '$purchase_date', '$cart_total', '$payment_mode_id')";
+$sql_query = "INSERT INTO orders(user_id, transaction_code, purchase_date, total, status_id, payment_mode_id) VALUES ('$user_id', '$transaction_code', '$purchase_date', '$cart_total', $status_id ,'$payment_mode_id')";
 
-$result = mysqli_query($conn, $sql_query);
+$result = mysqli_query($conn, $sql_query) or die(mysqli_error($conn));
+
 
 //get the id of the newly created order
 $new_order_id = mysqli_insert_id($conn); //retrieves the most recently created id
@@ -57,8 +62,10 @@ $mail = new PHPMailer(true); //creates a new instance of phpmailer with the exce
 
 $staff_email = "halpertsbikeshop@gmail.com";
 $customer_email = $_SESSION["user"]["email"];
+
 $subject = "Subject";
 $body = "<div style='text-transform:uppercase'><h3>Reference Number:".$transaction_code."</h3></div>"."<div>Ship to $delivery_adress</div>";
+
 
 try {
 	//Server settings
@@ -73,7 +80,7 @@ try {
 	
 	// send and recipient
 	$mail->setFrom($staff_email, "Alias"); //aliasing the sender
-	$mail->setAddress($customer_email); //who the recipient will be
+	$mail->addAddress($customer_email); //who the recipient will be
 
 	// content
 	$mail->isHTML(true);
@@ -83,7 +90,7 @@ try {
 	//sending the email
 	$mail->send();
 	$_SESSION["txn_number"] = $transaction_code;
-	$_SESSION["address"] = $delivery_adress;
+	$_SESSION["address"] = $delivery_address;
 	header("Location: ../views/confirmation.php");
 	
 } catch (Exception $e) {

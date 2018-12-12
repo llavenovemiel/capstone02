@@ -1,7 +1,7 @@
-<?php $page_title = "Items" ?>
+<?php $page_title = "Checkout" ?>
 <?php require_once("../partials/header.php") ?>
 <?php 
-	if (!isset($_SESSION["user"]) || (isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 2)) {
+	if ((isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 1)) {
 		header("Location: error.php");
 	}
  ?>
@@ -11,14 +11,23 @@
 		
 		<?php require_once("../partials/navbar.php") ?>
 
-
 		<div class="section1 row">
-			<div class="offset-lg-1 col-lg-10">
-				<div class="row item-list">
-					
-				</div>
+			<table class="table table-dark mx-5">
+				
+				<tbody>
+					<?php require_once("../controllers/move_cart_to_checkout.php") ?>		
+				</tbody>
+			</table>
+			
+		</div>
 
-			</div>
+		<div class="row px-3">
+			
+			<form method="POST" action="../controllers/place_order.php">
+				<input type="text" name="address-line" value="<?php echo $_SESSION['user']['address'] ?>">
+				<button type="submit" class="btn btn-block btn-primary">Place Order</button>	
+			</form>
+			
 		</div>
 
 	</main>
@@ -32,8 +41,6 @@
 	
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	
-	
-	<script src="../assets/js/list_items.js"></script>
 	
 </body>
 </html>
