@@ -5,6 +5,7 @@
 	$new_username = $_POST["username"];
 	$firstname = $_POST["firstname"];
 	$lastname = $_POST["lastname"];
+	$address = $_POST["address"];
 	$email = $_POST["email"];
 	$old_password = $_POST["old_password"];
 	$new_password = password_hash($_POST["password"], PASSWORD_BCRYPT);
@@ -13,7 +14,7 @@
 		echo "Incorrect password";
 	} else {
 		require_once("connect.php");
-		$sql_query = "UPDATE users SET username = '$new_username', first_name = '$firstname', last_name ='$lastname', email= '$email', password = '$new_password'  WHERE id = $user_id";
+		$sql_query = "UPDATE users SET username = '$new_username', first_name = '$firstname', last_name ='$lastname', email= '$email', password = '$new_password', address = '$address'  WHERE id = $user_id";
 		$result = mysqli_query($conn, $sql_query);
 		
 		$sql_query2 = "SELECT * FROM users WHERE id = '$user_id'";

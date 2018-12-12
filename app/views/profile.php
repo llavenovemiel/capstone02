@@ -44,6 +44,13 @@
 								<input type="text" name="lastname" id="lastname" class="form-control"value="<?php echo $_SESSION['user']['last_name']; ?>">
 								<span class="validation text-danger"></span>
 							</div>
+							
+							<div class="form-group">
+								<label for="lastname">Address:</label>
+								<input type="text" name="address" id="address" class="form-control"value="<?php echo $_SESSION['user']['address']; ?>">
+								<span class="validation text-danger"></span>
+							</div>
+
 							<div class="form-group">
 								<label for="email">Email:</label>
 								<input type="text" name="email" id="email" class="form-control" value="<?php echo $_SESSION['user']['email']; ?>">

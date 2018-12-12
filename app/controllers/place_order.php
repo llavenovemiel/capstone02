@@ -4,7 +4,19 @@
 require("connect.php");
 session_start();
 
-// see files from elah for preceding code
+function generate_new_transaction_number() {
+	$ref_number = "";
+
+	$source = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F');
+
+	for($i=0; $i<6; $i++){
+		$index = rand(0,15); //generates a random number given the range
+		$ref_number .= $source[$index]; //append a random character from the source array
+	}
+
+	$today = getdate(); // Seconds since Unic Epoch
+	return $ref_number . "-" . $today[0];
+}
 
 
 //get all details of the order
@@ -13,8 +25,7 @@ $purchase_date = date("Y-m-d G:i:s");
 $payment_mode_id = 1; //COD
 $status_id = 1; //pending
 $delivery_address = $_POST["address-line"];
-// $transaction_code = generate_new_transaction_number();
-$transaction_code = 1234;
+$transaction_code = generate_new_transaction_number();
 $cart_total = 0;
 foreach ($_SESSION["cart"] as $id => $qty) {
 	$cart_total_query = "SELECT * FROM items WHERE id = $id";
@@ -64,7 +75,7 @@ $staff_email = "halpertsbikeshop@gmail.com";
 $customer_email = $_SESSION["user"]["email"];
 
 $subject = "Subject";
-$body = "<div style='text-transform:uppercase'><h3>Reference Number:".$transaction_code."</h3></div>"."<div>Ship to $delivery_adress</div>";
+$body = "<div style='text-transform:uppercase'><h3>Reference Number:".$transaction_code."</h3></div>"."<div>Ship to $delivery_address</div>";
 
 
 try {
@@ -79,7 +90,7 @@ try {
 	$mail->Port = 587; //SMTP server's port to allow us to send mails
 	
 	// send and recipient
-	$mail->setFrom($staff_email, "Alias"); //aliasing the sender
+	$mail->setFrom($staff_email, "Halpert's"); //aliasing the sender
 	$mail->addAddress($customer_email); //who the recipient will be
 
 	// content

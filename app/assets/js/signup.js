@@ -3,13 +3,13 @@ const signUp = () => {
 	const firstName = $("#first-name");
 	const lastName = $("#last-name");
 	const userName = $("#username");
+	const address = $("#address");
 	const email = $("#email");
 	const pword1 = $("#password");
 	const pword2 = $("#confirm-password");
 
 	$("#add-user").click((e)=>{
 		e.preventDefault();
-
 
 		if (!firstName.val()) {
 			firstName.next().html("Please enter your first name.");
@@ -20,11 +20,17 @@ const signUp = () => {
 			userName.next().html("Please enter a username.");
 			firstName.next().html("");
 			lastName.next().html("");
+		} else if (!address.val()) {
+			address.next().html("Please enter an address.");
+			firstName.next().html("");
+			lastName.next().html("");
+			userName.next().html("");
 		} else if (!email.val()) {
 			email.next().html("Please enter an email.");
 			firstName.next().html("");
 			lastName.next().html("");
 			userName.next().html("");
+			address.next().html("");
 		} else if (!pword1.val()) {
 			pword1.next().html("Please enter a password.");
 			firstName.next().html("");

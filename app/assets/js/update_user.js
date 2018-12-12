@@ -9,7 +9,7 @@ $(document).ready(function(){
 		let firstname = $("#firstname").val();
 		let lastname = $("#lastname").val();
 		let email = $("#email").val();
-		// let address = $("#address").val();
+		let address = $("#address").val();
 		let old_password = $("#old-password").val();
 		let new_password = $("#new-password").val();
 		let conf_password = $("#conf-password").val();
@@ -45,12 +45,12 @@ $(document).ready(function(){
 				$("#email").next().text("");
 			}
 			
-			// if (!$.trim(address)) {
-			// 	$("#address").next().text("Provide a valid address");
-			// 	errors++;
-			// } else {
-			// 	$("#address").next().text("");
-			// }
+			if (!$.trim(address)) {
+				$("#address").next().text("Provide a valid address");
+				errors++;
+			} else {
+				$("#address").next().text("");
+			}
 
 			if (new_password != conf_password) {
 				$("#conf-password").next().text("Ensure passwords match.");
@@ -82,7 +82,7 @@ $(document).ready(function(){
 					firstname: firstname,
 					lastname: lastname,
 					email: email,
-					// address: adress,
+					address: address,
 					old_password: old_password,
 					password: new_password
 				},

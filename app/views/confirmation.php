@@ -1,5 +1,5 @@
 <?php 
-	$pageTitle = "Confirmation";
+	$page_title = "Confirmation";
 	require_once("../partials/header.php");
 
  ?>

@@ -23,6 +23,11 @@
 				<input type="text" class="form-control " id="username" name="userName" placeholder="User Name">
 				<span class="text-danger small"></span>
 			</div>
+			
+			<div class="form-group">
+				<input type="text" class="form-control " id="address" name="address" placeholder="Address">
+				<span class="text-danger small"></span>
+			</div>
 
 			<div class="form-group">
 				<input type="email" class="form-control " id="email" name="email" placeholder="Enter email">
