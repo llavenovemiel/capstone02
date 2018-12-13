@@ -21,7 +21,7 @@
 	<?php 
 		if(isset($_SESSION["txn_number"]) && isset($_SESSION["address"])){
 		?>
-		<div class="container">
+		<div class="section1 container">
 			<div class="row">
 				<div class="col-lg-8">
 					<h1>Confirmation Page</h1>

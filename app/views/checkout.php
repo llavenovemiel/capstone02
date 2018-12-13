@@ -1,5 +1,6 @@
 <?php $page_title = "Checkout" ?>
 <?php require_once("../partials/header.php") ?>
+<?php require_once("../controllers/connect.php"); ?>
 <?php 
 	if ((isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 1)) {
 		header("Location: error.php");
@@ -24,7 +25,20 @@
 		<div class="row px-3">
 			
 			<form method="POST" action="../controllers/place_order.php">
-				<input type="text" name="address-line" value="<?php echo $_SESSION['user']['address'] ?>">
+				<h4>Payment Option</h4>
+				<div class="form-group">
+					<select id="payment-mode" name="payment-mode" class="form-control">
+					<?php 
+						$payment_mode_query = "SELECT * FROM payment_modes";
+						$payment_modes = mysqli_query($conn, $payment_mode_query);
+						foreach ($payment_modes as $payment_mode) { ?>
+							<option value=<?php echo $payment_mode["id"]; ?>><?php echo $payment_mode["name"]; ?></option>
+					<?php } ?>
+					</select>
+				</div>
+				
+				<h4>Address</h4>
+				<input class="form-control" type="text" name="address-line" value="<?php echo $_SESSION['user']['address'] ?>">
 				<button type="submit" class="btn btn-block btn-primary">Place Order</button>	
 			</form>
 			
