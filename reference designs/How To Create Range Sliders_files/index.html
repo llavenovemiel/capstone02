@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://s0.2mdn.net/8017919/1519275683886/A_DBM%20Banners_Rebate%20v2_300x250/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Paypal</title>
+	<link rel="stylesheet" href="./fonts.css" type="text/css" charset="utf-8">
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./logos.css">
+<script type="text/javascript">var clickTag = "http://www.google.com"; </script><script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script></head>
+<body>
+	<main style="display: block;">
+		<a href="javascript:window.open(window.clickTag)">
+			<section class="bg-overlay"></section>
+			<section id="frame1" style="opacity: 0;">
+				<div class="f1-logo l1" style="transform: matrix(1, 0, 0, 1, 300, 0);"></div>
+				<div class="f1-logo l2" style="transform: matrix(1, 0, 0, 1, 300, 0);"></div>
+				<div class="f1-logo l3" style="transform: matrix(1, 0, 0, 1, 300, 0);"></div>
+				<div class="f1-logo l4" style="transform: matrix(1, 0, 0, 1, 300, 0);"></div>
+				<div class="f1-logo l5" style="transform: matrix(1, 0, 0, 1, 300, 0);"></div>
+				<div class="f1-logo l6" style="transform: translate3d(315.202px, 0px, 0px);"></div>
+			</section>
+			<section id="frame2" style="transform-origin: 0% 100% 0px; transform: matrix(1.00669, 0, 0, 1.00669, 0, 0); opacity: 1;">
+				<div id="HeaderDymcTxt2" class="header-wrap" dymctext="GET REWARDED&lt;br&gt;&lt;span&gt;WITH CASH REBATES&lt;/span&gt;"><div style="transform: translate3d(-164.556px, 0px, 0px);">GET REWARDED</div><div style="transform: matrix(1, 0, 0, 1, -300, 0);"><span>WITH CASH REBATES</span></div></div>
+			</section>
+			<section id="frame3" style="transform-origin: 0% 100% 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+				<div id="HeaderDymcTxt3" class="header-wrap" dymctext="Earn up to &lt;span&gt;US$100&lt;/span&gt;&lt;br&gt;cash rebates&lt;br&gt;for freelancing"><div style="transform: matrix(1, 0, 0, 1, -300, 0);">Earn up to <span>US$100</span></div><div style="transform: matrix(1, 0, 0, 1, -300, 0);">cash rebates</div><div style="transform: matrix(1, 0, 0, 1, -300, 0);">for freelancing</div></div>
+				<div id="CtaBtn" class="cta" style="transform: matrix(1, 0, 0, 1, -300, 0);">
+					<div class="cta-bg"></div>
+					<div id="CtaDymcTxt" class="cta-txt">Sign up for free</div>
+				</div>
+			</section>
+			<section class="logo" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+				<img src="./logo.png" alt="Logo">
+			</section>
+			<section id="slides">
+				<div class="colors slide1" style="transform: matrix3d(1, 0, 0, 0, -0.173648, 0.984808, 0, 0, 0, 0, 1, 0, 1.83735, 0, 0, 1);"></div>
+				<div class="colors slide2" style="transform: matrix3d(1, 0, 0, 0, -0.173648, 0.984808, 0, 0, 0, 0, 1, 0, -32.0564, 0, 0, 1);"></div>
+				<div class="colors slide3" style="transform: matrix3d(1, 0, 0, 0, -0.173648, 0.984808, 0, 0, 0, 0, 1, 0, -15.0263, 0, 0, 1); background-color: rgb(0, 156, 222);"></div>
+				<div class="colors slide4" style="transform: matrix(1, 0, -0.17364, 0.9848, 0, 0);"></div>
+			</section>
+		</a>	
+	</main> 
+	<script src="./tweenmax_1.20.0_d360d9a082ccc13b1a1a9b153f86b378_min.js.download"></script>
+	<script src="./paypal_script.js.download"></script>
+
+</body></html>
