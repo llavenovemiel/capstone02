@@ -8,10 +8,4 @@
 	foreach($categories as $category) {
 		echo "<li id= " . $category["id"] . " class=\"category\">" . $category["name"] . "</li>";
 	}
-					
-
-	// mysqli_close($conn);
-
-
-
 ?>

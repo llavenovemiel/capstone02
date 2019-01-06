@@ -1,11 +1,11 @@
-<?php $page_title = "Cart" ?>
-<?php require_once("../partials/header.php") ?>
+<?php $page_title = "Edit Item" ?>
+<?php require_once("../partials/start_body.php") ?>
+<?php require_once("../partials/navbar.php") ?>
 <?php 
 	if (!isset($_SESSION["user"]) || (isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 2)) {
 		header("Location: error.php");
 	}
  ?>
-
 
 <?php 
 	require("../controllers/connect.php");
@@ -18,49 +18,53 @@
  ?>
 
 <body>
-	<main class="container-fluid text-center">
+	<main id="main" class="container-fluid main pb-2">
 		
-		<?php require_once("../partials/navbar.php") ?>
 
-		<div class="section1 row">
-			<div class="offset-lg-3 col-lg-6">
-				<h1 class="font-weight-bold">Add Item</h1>
+		<div class="row">
+			<div class="offset-lg-2 col-lg-8">
+				<h1 class="font-weight-bold text-center">Edit Item</h1>
 
 				<form method="post" action="../controllers/process_edit_item.php"  enctype="multipart/form-data">
 			  			
 						
 					<div class="form-group">
-						<input type="text" class="form-control" id="item-name" name="item-name" placeholder="Item Name" value="<?php echo $item["name"] ?>">
+						<label for="item-name">Item</label>
+						<input type="text" class="form-control login-input" id="item-name" name="item-name" placeholder="Item Name" value="<?php echo $item["name"] ?>">
 						<span class="text-danger small"></span>
 					</div>
 					
 					<div class="form-group">
-						<input type="number" class="form-control" id="item-price" name="item-price"placeholder="Item Price" value=<?php echo $item["price"] ?>>
+						<label for="item-price">Price</label>
+						<input type="number" class="form-control login-input" id="item-price" name="item-price"placeholder="Item Price" value=<?php echo $item["price"] ?>>
 						<span class="text-danger small"></span>
 					</div>
 					
 					<div class="form-group">
-						<input type="text" class="form-control" id="item-brand" name="item-brand" placeholder="Item Brand" value="<?php echo $item["brand"] ?>">
+						<label for="item-brand">Brand</label>
+						<input type="text" class="form-control login-input" id="item-brand" name="item-brand" placeholder="Item Brand" value="<?php echo $item["brand"] ?>">
 						<span class="text-danger small"></span>
 					</div>
 					
 					<div class="form-group">
-						<textarea class="form-control" rows="5"  name="item-description" placeholder="Item Description"><?php echo $item["description"] ?></textarea>
+						<label for="description">Description</label>
+						<textarea id="description" class="form-control" rows="5"  name="item-description" placeholder="Item Description"><?php echo $item["description"] ?></textarea>
 					</div>
 
 					<div class="form-group">
-						
+						<label for="item-category">Category</label>
 						<select id="item-category" class="form-control" name="item-category">
 							<?php require_once("../controllers/get_categories_refactor_edit_item.php") ?>
 						</select>
 					</div>
 
 					<div class="form-group">
+						<label for="item-img">Image</label>
 						<input type="file" class="form-control" id="item-img" name="item-img">
 					</div>
 
 
-		    		<button id="update-item" class="btn btn-block" type="submit" name="id" value=<?php echo $item["id"] ?>>Update Item</button>
+		    		<button id="update-item" class="btn btn-block b-offblack login-input" type="submit" name="id" value=<?php echo $item["id"] ?>>Update Item</button>
 
 				</form>
 				
@@ -77,15 +81,8 @@
 
 
 
-	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
-	<script type="text/javascript" src="../assets/js/jquery-3.3.1.js"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-	
-
-	<script src="../assets/js/cart.js"></script>
+	<?php require_once("../partials/footer.php") ?>
+	<?php require_once("../partials/end_body.php") ?>
 	
 </body>
 </html>

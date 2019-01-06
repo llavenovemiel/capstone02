@@ -1,7 +1,8 @@
 const login = () => {
 
-	const userName = $("#user-name");
+	const userName = $("#username");
 	const password = $("#password");
+	const destination = $("#login").data("destination");
 
 	$("#login").click((e)=>{
 		e.preventDefault();
@@ -32,7 +33,11 @@ const login = () => {
 						password.next().html("");
 						userName.next().html(data);
 					} else {
-						window.location.href = "index.php";
+						if (destination == "checkout") {
+							window.location.href = "checkout.php";
+						} else {
+							window.location.href = "index.php";
+						}
 					}
 					
 				}

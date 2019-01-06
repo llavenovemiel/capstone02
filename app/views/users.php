@@ -1,7 +1,8 @@
 <?php 
 	$page_title = "Users";
-	require_once("../partials/header.php");
+	require_once("../partials/start_body.php");
 ?>
+<?php require_once("../partials/navbar.php") ?>
 
 <?php 
 	if (!isset($_SESSION["user"]) || (isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 2)) {
@@ -11,16 +12,12 @@
 
 <body>
 
-<main class="container-fluid">
-	
-	<?php require_once("../partials/navbar.php") ?>
-
-	<div class="container section1">
-		<div class="row">
-			<h4>User Admin Page</h4>	
-		</div>
-		<div class="row">
-			<table class="table table-striped">
+	<main id="main" class="container-fluid main pb-2">
+		
+		<h1 class="text-center font-weight-bold">Users</h1>	
+		
+		<div class="table-responsive">
+			<table id="users-table" class="table table-striped">
 				<thead>
 					<tr>
 						<td>User Name</td>
@@ -50,16 +47,23 @@
 							<td>
 								<?php 
 									$id = $user["id"];
-									if ($user["role"] == "admin") {
+									if ($user["role"] == "Admin") {
+										if ($id == $_SESSION["user"]["id"]) {
 								?>
+											<span>N/A</span>
+								<?php 
+										} else {
+								 ?>
+											<a href="../controllers/grant_admin.php?id=<?php echo $id; ?>" class="btn b-offblack login-input">Revoke Admin</a>
+								<?php 
+										}
+									} else { 
+								 ?>	
 
-									<a href="../controllers/grant_admin.php?id=<?php echo $id; ?>" class="btn btn-danger">Revoke Admin</a>
-								
-								<?php } else { ?>
-
-									<a href="../controllers/grant_admin.php?id=<?php echo $id; ?>" class="btn btn-primary">Make Admin</a>
-
-								<?php } ?>
+										<a href="../controllers/grant_admin.php?id=<?php echo $id; ?>" class="btn login-input btn-secondary">Make Admin</a>
+								<?php
+									} 
+								?>
 								
 								
 							</td>
@@ -70,9 +74,11 @@
 				</tbody>
 			</table>
 		</div>
-		
-
-	</div>
-
-
-</main>
+			
+	</main>
+	<?php require_once("../partials/footer.php") ?>
+	<?php require_once("../partials/end_body.php") ?>
+	
+	
+</body>
+</html>

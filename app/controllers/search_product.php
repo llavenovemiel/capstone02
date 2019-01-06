@@ -1,7 +1,7 @@
 <?php 
 	require_once("connect.php");
 	
-	$searchVal = $_POST["searchVal"];
+	$searchVal = htmlspecialchars($_POST["searchVal"]);
 	$sql = "SELECT * FROM items WHERE name LIKE '%$searchVal%' or brand LIKE '%$searchVal%'";
 
 	$result = mysqli_query($conn, $sql);

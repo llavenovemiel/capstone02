@@ -2,8 +2,8 @@
 	require("connect.php");
 	session_start();
 	
-	$user_name = $_POST["userName"];
-	$password = $_POST["password"];
+	$user_name = htmlspecialchars($_POST["userName"]);
+	$password = htmlspecialchars($_POST["password"]);
 
 	$sql = "SELECT * from users WHERE username = '$user_name' or email = '$user_name'";
 	$result = mysqli_query($conn, $sql);
@@ -20,7 +20,5 @@
 	} else {
 		die("Unregistered user.");		
 	}
-
-	echo "Logged in.";
 
 	mysqli_close($conn);

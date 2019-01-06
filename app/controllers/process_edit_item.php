@@ -1,11 +1,11 @@
 <?php 
 	require("connect.php");
 	$id = $_POST["id"];
-	$name = $_POST["item-name"];
-	$brand = $_POST["item-brand"];
-	$price = $_POST["item-price"];
-	$description = $_POST["item-description"];
-	$category_id = $_POST["item-category"];
+	$name = htmlspecialchars($_POST["item-name"]);
+	$brand = htmlspecialchars($_POST["item-brand"]);
+	$price = htmlspecialchars($_POST["item-price"]);
+	$description = htmlspecialchars($_POST["item-description"]);
+	$category_id = htmlspecialchars($_POST["item-category"]);
 
 
 	if($_FILES["item-img"]["size"] !== 0) {
