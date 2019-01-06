@@ -1,11 +1,10 @@
 <?php 
+	session_start();
 	$page_title = "Profile";
 	require_once("../partials/start_body.php");
 	require_once("../controllers/connect.php");
 	require_once("../partials/navbar.php");
  ?>
-
-<body>
 
 <main id="main" class="container-fluid main py-2">
 

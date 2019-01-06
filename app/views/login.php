@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php $page_title = "Log In" ?>
 <?php require_once("../partials/start_body.php") ?>
 

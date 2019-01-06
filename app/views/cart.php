@@ -1,13 +1,12 @@
-<?php $page_title = "Cart" ?>
-<?php require_once("../partials/start_body.php") ?>
-<?php require_once("../partials/navbar.php") ?>
 <?php 
+	session_start();
 	if ((isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 1)) {
 		header("Location: error.php");
 	}
+	$page_title = "Cart";
+	require_once("../partials/start_body.php");
+	require_once("../partials/navbar.php");
  ?>
-
-<body>
 	<main id="main" class="container-fluid main px-0">
 		<div class="cart-banner">
 			<h2 class="cart-text text-center font-weight-bold">CART</h2>

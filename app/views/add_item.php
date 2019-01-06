@@ -1,14 +1,12 @@
-<?php $page_title = "Add Item" ?>
-<?php require_once("../partials/start_body.php") ?>
-<?php require_once("../partials/navbar.php") ?>
 <?php 
+	session_start();
 	if (!isset($_SESSION["user"]) || (isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 2)) {
 		header("Location: error.php");
 	}
+	$page_title = "Add Item";
+	require_once("../partials/start_body.php");
+	require_once("../partials/navbar.php");
  ?>
-
-
-<body>
 	<main id="main" class="container-fluid main pb-2">
 		
 

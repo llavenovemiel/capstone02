@@ -1,26 +1,12 @@
-<?php $page_title = "Items" ?>
-<?php require_once("../partials/start_body.php") ?>
 <?php 
+	session_start();
 	if (!isset($_SESSION["user"]) || (isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 2)) {
 		header("Location: error.php");
 	}
+	$page_title = "Items";
+	require_once("../partials/start_body.php");
+	require_once("../partials/navbar.php");
  ?>
-<?php require_once("../partials/navbar.php") ?>
-
-<body>
-	<!-- <main class="container-fluid main">
-
-		<div class="row">
-			<div class="offset-lg-1 col-lg-10">
-				<div class="row item-list">
-					
-				</div>
-
-			</div>
-		</div>
-
-	</main> -->
-
 	<main id="main" class="container-fluid main">	
 		<div class="row">
 			<div class="shop-left col-12">

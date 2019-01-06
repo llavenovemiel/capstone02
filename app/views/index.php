@@ -1,7 +1,9 @@
-<?php $page_title = "Home" ?>
-<?php require_once("../partials/start_body.php") ?>
-<?php require_once("../partials/navbar.php") ?>
-
+<?php 
+	session_start();
+	$page_title = "Home";
+	require_once("../partials/start_body.php");
+	require_once("../partials/navbar.php");
+ ?>
 <main id="main" class="container-fluid main px-0">
 	<div class="home-banner px-5 d-flex flex-column justify-content-center align-items-center align-items-lg-start">
 		<h2 class="font-bold text-center">Clean, healthy, instant urban mobility.</h2>

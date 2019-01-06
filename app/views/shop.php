@@ -1,13 +1,12 @@
-<?php $page_title = "Shop" ?>
-<?php require_once("../partials/start_body.php") ?>
-<?php require_once("../partials/navbar.php") ?>
 <?php 
+	session_start();
 	if ((isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 1)) {
 		header("Location: error.php");
 	}
+	$page_title = "Shop";
+	require_once("../partials/start_body.php");
+	require_once("../partials/navbar.php");
  ?>
-
-<body>
 	<main id="main" class="container-fluid main">	
 		<div class="row">
 			<div class="shop-left col-12">

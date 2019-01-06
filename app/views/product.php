@@ -1,8 +1,12 @@
-<?php $page_title = "Product" ?>
-<?php require_once("../partials/start_body.php") ?>
-<?php require_once("../partials/navbar.php") ?>
-
-<body>
+<?php 
+	session_start();
+	if ((isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 1)) {
+		header("Location: error.php");
+	}
+	$page_title = "Product";
+	require_once("../partials/start_body.php");
+	require_once("../partials/navbar.php");
+ ?>
 	<main id="main" class="container-fluid text-center main pb-2">
 		
 

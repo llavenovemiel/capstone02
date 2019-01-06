@@ -1,17 +1,12 @@
 <?php 
-	$page_title = "Confirmation";
-	require_once("../partials/start_body.php");
-
- ?>
-<?php require_once("../partials/navbar.php") ?>
-
- <?php 
+	session_start();
 	if ((isset($_SESSION["user"]) && $_SESSION["user"]["role_id"] == 1)) {
 		header("Location: error.php");
 	}
+	$page_title = "Confirmation";
+	require_once("../partials/start_body.php");
+	require_once("../partials/navbar.php");
  ?>
- <body>
-	
 	<main class="main container-fluid text-center d-flex flex-column justify-content-center">
 		<?php 
 			if(isset($_SESSION["txn_number"]) && isset($_SESSION["address"])){

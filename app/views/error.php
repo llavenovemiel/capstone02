@@ -1,10 +1,9 @@
 <?php 
+	session_start();
 	$page_title = "Error";
 	require_once("../partials/start_body.php");
 ?>
 <?php require_once("../partials/navbar.php") ?>
-<body>
-
 <main class="container-fluid main text-center d-flex flex-column justify-content-center">
 	<div class="row">
 		<div class="offset-lg-2 col-lg-8">
